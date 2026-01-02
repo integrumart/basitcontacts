@@ -66,7 +66,7 @@ $kisiler = getKisiler();
                                 <td><?php echo htmlspecialchars($kisi['email'] ?? '-'); ?></td>
                                 <td><?php echo htmlspecialchars($kisi['adres'] ?? '-'); ?></td>
                                 <td class="actions-cell">
-                                    <a href="?sil=<?php echo $kisi['id']; ?>" 
+                                    <a href="?sil=<?php echo htmlspecialchars($kisi['id']); ?>" 
                                        class="btn btn-danger btn-small"
                                        onclick="return confirm('Bu kişiyi silmek istediğinize emin misiniz?');">
                                         🗑️ Sil

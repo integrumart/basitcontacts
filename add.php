@@ -25,7 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Formu temizle
             $ad = $soyad = $telefon = $email = $adres = '';
         } catch (PDOException $e) {
-            $hata = 'Kayıt eklenirken hata oluştu: ' . $e->getMessage();
+            // Güvenlik için detaylı hata mesajı gösterilmez
+            error_log('Kayıt ekleme hatası: ' . $e->getMessage());
+            $hata = 'Kayıt eklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
         }
     }
 }

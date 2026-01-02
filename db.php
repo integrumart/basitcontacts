@@ -14,6 +14,8 @@ function getDBConnection() {
         $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
         return $pdo;
     } catch (PDOException $e) {
-        die("Veritabanı bağlantı hatası: " . $e->getMessage());
+        // Güvenlik için detaylı hata mesajı gösterilmez
+        error_log('Veritabanı bağlantı hatası: ' . $e->getMessage());
+        die("Veritabanı bağlantı hatası oluştu. Lütfen sistem yöneticinizle iletişime geçin.");
     }
 }
