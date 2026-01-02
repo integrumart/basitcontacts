@@ -20,6 +20,19 @@ Basit bir PHP ve MySQL tabanlı kişi yönetim sistemi.
 
 ## Kurulum
 
+### Otomatik Kurulum (Linux/Mac)
+
+Kurulum scriptini çalıştırın:
+
+```bash
+chmod +x install.sh
+./install.sh
+```
+
+Script sizden veritabanı bilgilerini soracak ve otomatik olarak kurulumu tamamlayacaktır.
+
+### Manuel Kurulum
+
 ### 1. Dosyaları Kopyalayın
 
 Proje dosyalarını web sunucunuzun kök dizinine kopyalayın (örneğin: `htdocs` veya `www`).
@@ -79,6 +92,7 @@ basitcontacts/
 ├── config.php         # Veritabanı yapılandırması
 ├── style.css          # CSS stilleri
 ├── database.sql       # Veritabanı şeması
+├── install.sh         # Otomatik kurulum scripti (Linux/Mac)
 └── README.md          # Bu dosya
 ```
 
