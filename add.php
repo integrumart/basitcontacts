@@ -1,9 +1,16 @@
 <?php
+session_start();
 require_once 'db.php';
 
 $db = new Database();
 $message = '';
 $error = '';
+
+// Oturum mesajını kontrol et
+if (isset($_SESSION['success_message'])) {
+    $message = $_SESSION['success_message'];
+    unset($_SESSION['success_message']);
+}
 
 // Form gönderildiğinde
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Kişiyi ekle
         if ($db->addContact($ad, $soyad, $telefon, $email, $adres)) {
-            $message = 'Kişi başarıyla eklendi!';
-            // Formu temizle
-            $ad = $soyad = $telefon = $email = $adres = '';
+            $_SESSION['success_message'] = 'Kişi başarıyla eklendi!';
+            header("Location: add.php");
+            exit;
         } else {
             $error = 'Kişi eklenirken bir hata oluştu!';
         }

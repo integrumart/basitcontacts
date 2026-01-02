@@ -7,6 +7,14 @@ define('DB_NAME', 'basitcontacts');
 define('DB_CHARSET', 'utf8mb4');
 
 // Hata raporlama (Geliştirme ortamı için)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Üretim ortamında DEVELOPMENT sabitini false yapın
+define('DEVELOPMENT', true);
+
+if (DEVELOPMENT) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+} else {
+    error_reporting(0);
+    ini_set('display_errors', 0);
+}
 ?>

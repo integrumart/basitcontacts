@@ -12,6 +12,5 @@ CREATE TABLE IF NOT EXISTS contacts (
     email VARCHAR(150),
     adres TEXT,
     kayit_tarihi TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    INDEX idx_ad (ad),
-    INDEX idx_soyad (soyad)
+    INDEX idx_ad_soyad (ad, soyad)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;

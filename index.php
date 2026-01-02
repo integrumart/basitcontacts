@@ -1,10 +1,17 @@
 <?php
+session_start();
 require_once 'db.php';
 
 $db = new Database();
 $contacts = [];
 $searchQuery = '';
 $message = '';
+
+// Oturum mesajını kontrol et
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    unset($_SESSION['message']);
+}
 
 // Arama işlemi
 if (isset($_GET['search']) && !empty($_GET['search'])) {
@@ -18,12 +25,12 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 if (isset($_GET['delete'])) {
     $id = (int)$_GET['delete'];
     if ($db->deleteContact($id)) {
-        $message = '<div class="message success">Kişi başarıyla silindi!</div>';
-        header("Location: index.php");
-        exit;
+        $_SESSION['message'] = '<div class="message success">Kişi başarıyla silindi!</div>';
     } else {
-        $message = '<div class="message error">Kişi silinirken bir hata oluştu!</div>';
+        $_SESSION['message'] = '<div class="message error">Kişi silinirken bir hata oluştu!</div>';
     }
+    header("Location: index.php");
+    exit;
 }
 ?>
 
