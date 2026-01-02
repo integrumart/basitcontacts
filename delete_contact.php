@@ -11,7 +11,11 @@ if ($contact_id > 0) {
         $stmt = $conn->prepare("DELETE FROM contacts WHERE id = ? AND user_id = ?");
         $stmt->execute([$contact_id, $_SESSION['user_id']]);
     } catch(PDOException $e) {
-        // Error handling
+        // Log error for debugging
+        error_log("Error deleting contact: " . $e->getMessage());
+        // Redirect to dashboard with error parameter
+        header("Location: dashboard.php?error=delete_failed");
+        exit();
     }
 }
 

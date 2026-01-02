@@ -23,7 +23,9 @@ function getDBConnection() {
         );
         return $conn;
     } catch(PDOException $e) {
-        die("Bağlantı hatası: " . $e->getMessage());
+        // Log error for debugging (in production, log to file)
+        error_log("Database connection error: " . $e->getMessage());
+        die("Veritabanına bağlanılamadı. Lütfen daha sonra tekrar deneyin.");
     }
 }
 
