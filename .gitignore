@@ -1,0 +1,24 @@
+# Veritabanı yapılandırma dosyası (opsiyonel güvenlik için)
+# config.php
+
+# IDE ve editör dosyaları
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Geçici dosyalar
+*.log
+*.tmp
+/tmp/
+
+# Vendor ve bağımlılıklar
+/vendor/
+composer.lock
+
+# Sistem dosyaları
+Thumbs.db
+ehthumbs.db
+Desktop.ini
